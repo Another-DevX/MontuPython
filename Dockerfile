@@ -11,10 +11,10 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiamos el resto del código de la aplicación al directorio de trabajo
-COPY montu-app/ ./montu-app/
+COPY montu-app/ /usr/src/app/
 
 # Exponemos el puerto en el que se ejecutará la aplicación
 EXPOSE 8060
 
 # Especificamos el comando para iniciar la aplicación
-CMD ["python", "./montu-app/app.py"]
+CMD ["gunicorn", "-b", "0.0.0.0:8060", "app:server"]
