@@ -11,10 +11,10 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiamos el resto del código de la aplicación al directorio de trabajo
-COPY app/ ./app/
+COPY montu-app/ ./montu-app/
 
 # Exponemos el puerto en el que se ejecutará la aplicación
-EXPOSE 8080
+EXPOSE 8060
 
 # Especificamos el comando para iniciar la aplicación
 CMD ["python", "./montu-app/app.py"]
